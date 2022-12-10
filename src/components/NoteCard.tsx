@@ -1,26 +1,22 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import supabase from '../config/supabaseClient'
-import { deleteNote } from '../utils/supabseCrudFunctions'
-
 import { TiTick } from 'react-icons/ti'
 import { AiFillDelete } from 'react-icons/ai'
 import useDebounce from '../utils/useDebounce'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store/store'
+import { NoteProps } from '../types/types'
+import { useSupabaseCRUD } from '../hooks/useSupabaseCRUD'
 
-export interface noteProps {
-  note: {
-    id: number,
-    created_at: string,
-    title: string,
-    details: string,
-  }
-}
 
 let slectionStyles = "outline-lime-400 rounded-md outline-[1.5px]  "
 
-const Card:FC<noteProps> = ({note}) => {
+export interface NoteCardProps {
+  note: NoteProps
+}
+
+const NoteCard:FC<NoteCardProps> = ({note}) => {
   const [noteTitle, setNoteTitle] = useState("")
   const [noteDetails, setNoteDetails] = useState("")
 
@@ -35,12 +31,10 @@ const Card:FC<noteProps> = ({note}) => {
   const debouncedValue = useDebounce<string>(noteDetails, 1000)
 
   const notes = useSelector((state: RootState) => state.note)
+  const user = useSelector((state: RootState) => state.user)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    console.log("Redux state: ", notes)
-  }, [notes])
-  
+  const {deleteNote, updateSpecificNote} = useSupabaseCRUD()
 
   useEffect(() => {
     setIsTyping(false);
@@ -76,13 +70,7 @@ const Card:FC<noteProps> = ({note}) => {
         return
       }
 
-      const { data, error } = await supabase
-      .from("notes")
-      .update({title: noteTitle, details: noteDetails})
-      .eq("id", note.id).select()
-    
-      if(data){
-      }
+      await updateSpecificNote({title: noteTitle, details: noteDetails}, note.id)
     }
   }
 
@@ -141,4 +129,4 @@ const Card:FC<noteProps> = ({note}) => {
   )
 }
 
-export default Card
+export default NoteCard

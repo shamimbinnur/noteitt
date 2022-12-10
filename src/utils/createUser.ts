@@ -1,11 +1,11 @@
 import supabase from "../config/supabaseClient"
+import { UserInfo } from "../types/types"
 
-const deleteNote = async (id: number) => {
+export const createUser = async (userInfo: UserInfo) => {
+    console.log(userInfo)
     const { data, error } = await supabase
-    .from("notes")
-    .delete()
-    .eq("id", id)
-    .select("title")
+    .from("profile")
+    .upsert(userInfo)
   
     if(data){
       return data
@@ -13,6 +13,4 @@ const deleteNote = async (id: number) => {
     if(error){
       return error
     }
-  }
-
-export { deleteNote }
+}

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import Card from '../components/Note'
-import NoteContainer from '../components/NoteContainer'
-import supabase from '../config/supabaseClient'
+import React from 'react'
+import NoteContainer from '../scenes/NoteContainer'
 
-const Home = () => {
+
+const Home = () => { 
     return (
     <div>
         <NoteContainer/>
