@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { AuthUser } from '@supabase/supabase-js'
+import supabase from '../../../config/supabaseClient'
 
 export interface UserState {
-  user: AuthUser | null
+  user: any
 }
 
 const initialState: UserState = {
-  user: null
+  user: null,
 }
 
 export const userSlice = createSlice({

@@ -1,10 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Navigate, redirect, useLocation, useNavigate } from 'react-router-dom'
 import supabase from '../config/supabaseClient'
+import { RootState } from '../store/store'
 import { UserInfo } from '../types/types'
 import { createUser } from '../utils/createUser'
 
 const Login = () => {
+
+  const { user }  =  useSelector((state: RootState) => state.user)
+  const location = useLocation()
+  const navigate = useNavigate()
+
   async function signInWithGoogle() {
+
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
     })
@@ -29,6 +38,9 @@ const Login = () => {
 
   return (
     <div>
+      {
+        user?.id && <Navigate to="/app" state={{from: location}} replace />
+      }
       <button onClick={signInWithGoogle}>Signin</button>
       <button onClick={signout}>out</button>
     </div>

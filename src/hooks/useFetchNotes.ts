@@ -1,5 +1,5 @@
 import { PostgrestError } from "@supabase/supabase-js"
-import { useEffect } from "react"
+import { useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import supabase from "../config/supabaseClient"
 import { updateAllNotes, updateError } from "../store/features/note/noteSlice"
@@ -7,14 +7,14 @@ import { RootState } from "../store/store"
 
 export const useFetchNotes = () => {
     const dispatch = useDispatch()
-    const noteSate = useSelector((state: RootState) => state.note)
-    
+    const { user } = useSelector((state: RootState) => state.user)
+
     useEffect(() => {
       updateState()
     },[])
-    
 
     useEffect(() => {
+        console.log("I started listening")
         supabase
         .channel('public:notes')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'notes' }, payload => {
@@ -29,19 +29,23 @@ export const useFetchNotes = () => {
     },[])
 
     const updateState = async () => {
+      try {
         const { data, error } = await supabase
         .from("notes")
         .select()
+        .eq("authorId", user.id)
         .order('created_at', { ascending: false })
-    
         if (data) {
           dispatch(updateAllNotes(data))
-          console.log(noteSate)
           dispatch(updateError(null as unknown as PostgrestError))
         }
         else if ( error){
           dispatch(updateAllNotes([]))
           dispatch(updateError(error))
         }
+        
+      } catch (error) {
+        console.log("Got while listening: ", error)
       }
+    }
 }
