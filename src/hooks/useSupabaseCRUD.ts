@@ -1,4 +1,3 @@
-import { PostgrestError } from "@supabase/supabase-js"
 import supabase from "../config/supabaseClient"
 import { NoteInfo } from "../types/types"
 
@@ -6,12 +5,11 @@ import { NoteInfo } from "../types/types"
 //Param(2) : Note's information and userID
 
 const createNote = async (noteData: NoteInfo, authorId: string) => {
-    const { data, error } = await supabase
+    const data = await supabase
     .from('notes')
     .insert({...noteData, authorId})
     
-    if(data) return data
-    if (error) return error as PostgrestError
+    return data;
 
 }
 
@@ -19,14 +17,13 @@ const createNote = async (noteData: NoteInfo, authorId: string) => {
 //Param(id): Specific note's ID
 
 const deleteNote = async (id: number) => {
-    const { data, error } = await supabase
-    .from("notes")
+    const data = await supabase
+    .from('notes')
     .delete()
-    .eq("id", id)
-    .select("title")
+    .eq('id', id)
+    .select('title')
     
-    if(data) return data
-    if(error) return error
+    return data;
 }
 
 
@@ -34,14 +31,27 @@ const deleteNote = async (id: number) => {
 //Param(2): noteInfo: NoteInfo, noteId: number
 
 const updateSpecificNote = async (noteInfo: NoteInfo, noteId: number) => {
-    const { data, error } = await supabase
-    .from("notes")
+    const data = await supabase
+    .from('notes')
     .update({title: noteInfo.title, details: noteInfo.details})
-    .eq("id", noteId)
+    .eq('id', noteId)
     .select()
   
-    if (data) return data
-    if(error) return data
+    return data;
 }
 
-export const useSupabaseCRUD = () =>  ({ createNote, deleteNote, updateSpecificNote })
+// Funtion to fetch a guest note
+//Param(1): noteUUID: string
+
+const fetchGuestNote = async ( noteUUID: string | undefined) => {
+    const data = await supabase
+    .from('notes')
+    .select('*, profile(*)')
+    .eq('uuid', noteUUID)
+    .eq('isPublic', true)
+    .single()
+  
+    return data
+}
+
+export const useSupabaseCRUD = () =>  ({ createNote, deleteNote, updateSpecificNote, fetchGuestNote })

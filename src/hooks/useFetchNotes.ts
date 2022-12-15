@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { PostgrestError } from "@supabase/supabase-js"
 import { useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -19,7 +20,7 @@ export const useFetchNotes = () => {
         .channel('public:notes')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'notes' }, payload => {
           updateState()
-          console.log("Received!")
+          console.log('Received!')
         })
         .subscribe()
     
@@ -31,9 +32,9 @@ export const useFetchNotes = () => {
     const updateState = async () => {
       try {
         const { data, error } = await supabase
-        .from("notes")
+        .from('notes')
         .select()
-        .eq("authorId", user.id)
+        .eq('authorId', user.id)
         .order('created_at', { ascending: false })
         if (data) {
           dispatch(updateAllNotes(data))

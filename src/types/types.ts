@@ -6,9 +6,18 @@ export interface UserInfo {
 }
 export interface NoteProps {
     id: number,
+    uuid: string
     created_at: string,
+    authorId: string,
     title: string,
     details: string,
+    isPublic: boolean,
+}
+export interface GuestNoteProps {
+    uuid: string
+    title: string,
+    details: string,
+    author: UserInfo
 }
 export interface NoteInfo {
     title: string
