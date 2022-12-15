@@ -1,15 +1,22 @@
-# Getting Started with Create React App
+# NoteIt
+A simple web app for note keeping and sharing note with others.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Build with:
+1. React.
+2. Redux Tookit.
+3. Supabase, Supabase Realtime Database, Supabase Auth.
+4. Tailwind CSS.
 
-## Available Scripts
+### This project needs 2 enivironment variables
 
-In the project directory, you can run:
+```
+REACT_APP_SUPABASE_URL="
+REACT_APP_SUPABASE_ANON_KEY="
+```
 
-### `npm start`
+### Run this project on your local machine:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+npm install
+npm start
+```
