@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import NoteContainer from '../scenes/NoteContainer'
-
+import React from 'react'
+import Container from '../components/Container'
+import HomeBackround from '../components/HomeBackround'
+import UserAvatar from '../components/UserAvatar'
+import NoteWrapper from '../scenes/NotedWrapper'
 
 const Home = () => { 
     return (
-    <div>
-        <NoteContainer/>
-    </div>
+      <HomeBackround>
+        <Container>
+          <NoteWrapper/>
+
+          <UserAvatar/>
+        </Container>
+      </HomeBackround>
     )
 }
 

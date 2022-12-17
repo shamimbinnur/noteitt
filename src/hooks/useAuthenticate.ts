@@ -21,8 +21,8 @@ const useAuthenticate = () => {
             } 
         })
     }, [])
-    
-    
+
+
     const verifyUser = async ()=> {
         const { data: { user } } = await supabase.auth.getUser()
         
@@ -33,7 +33,7 @@ const useAuthenticate = () => {
               email: user?.email,
               avatar: user?.user_metadata.avatar_url,
             }
-    
+
             await createUser(userInfo)
           }
         dispatch(updateUser(user as AuthUser))

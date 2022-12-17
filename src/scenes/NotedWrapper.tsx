@@ -5,12 +5,11 @@ import CreateNote from '../components/CreateNote'
 import NoteCard from '../components/NoteCard'
 import { NoteProps } from '../types/types'
 import { useFetchNotes } from '../hooks/useFetchNotes'
-import Loader from './Loader'
 import supabase from '../config/supabaseClient'
 
 
 
-const NoteContainer = () => {
+const NotesWrapper = () => {
     useFetchNotes()
     const { notes } = useSelector((state: RootState) => state.note)
     const { user } = useSelector((state: RootState) => state.user)
@@ -20,7 +19,7 @@ const NoteContainer = () => {
     }
 
     return (
-      <div>
+      <div className="h-full">
         <div className="flex flex-wrap justify-center gap-4">
           <button onClick={signOut}>Out</button>
           <CreateNote/>
@@ -37,4 +36,4 @@ const NoteContainer = () => {
     )
 }
 
-export default NoteContainer
+export default NotesWrapper
