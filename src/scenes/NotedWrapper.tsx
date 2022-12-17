@@ -1,31 +1,26 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/store'
-import CreateNote from '../components/CreateNote'
 import NoteCard from '../components/NoteCard'
 import { NoteProps } from '../types/types'
 import { useFetchNotes } from '../hooks/useFetchNotes'
-import supabase from '../config/supabaseClient'
-
-
+import NoteSkeleton from './NoteSkeleton'
 
 const NotesWrapper = () => {
+  
     useFetchNotes()
-    const { notes } = useSelector((state: RootState) => state.note)
-    const { user } = useSelector((state: RootState) => state.user)
-
-    const signOut = async() => {
-      const { error } = await supabase.auth.signOut()
-    }
+    const { isLoading, notes } = useSelector((state: RootState) => state.note);
 
     return (
       <div className="h-full">
         <div className="flex flex-wrap justify-center gap-4">
-          <button onClick={signOut}>Out</button>
-          <CreateNote/>
+          {/* <CreateNote/> */}
+          {
+            isLoading && <NoteSkeleton/>
+          }
           {
             notes && 
-            notes.map( (note)=> (
+            notes.map( (note) => (
               <div>
                 <NoteCard note={note as NoteProps}/>
               </div>
@@ -36,4 +31,4 @@ const NotesWrapper = () => {
     )
 }
 
-export default NotesWrapper
+export default NotesWrapper;

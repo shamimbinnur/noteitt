@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, redirect, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home';
 import Login from './pages/Login';
 import useAuthenticate from './hooks/useAuthenticate';
@@ -14,9 +14,7 @@ function App() {
   useAuthenticate()
   const { user, isLoading } = useSelector((state: RootState) => state.user)
 
-  if (isLoading) {
-    return <Loader/>
-  }
+  if ( isLoading ) return <Loader/>
 
   return (
     <>

@@ -3,7 +3,7 @@ import { PostgrestError } from "@supabase/supabase-js"
 import { useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import supabase from "../config/supabaseClient"
-import { updateAllNotes, updateError } from "../store/features/note/noteSlice"
+import { setLoading, updateAllNotes, updateError } from "../store/features/note/noteSlice"
 import { RootState } from "../store/store"
 
 export const useFetchNotes = () => {
@@ -30,6 +30,9 @@ export const useFetchNotes = () => {
     },[])
 
     const updateState = async () => {
+
+      dispatch(setLoading(true))
+
       try {
         const { data, error } = await supabase
         .from('notes')
@@ -39,10 +42,12 @@ export const useFetchNotes = () => {
         if (data) {
           dispatch(updateAllNotes(data))
           dispatch(updateError(null as unknown as PostgrestError))
+          dispatch(setLoading(false))
         }
         else if ( error){
           dispatch(updateAllNotes([]))
           dispatch(updateError(error))
+          dispatch(setLoading(false))
         }
         
       } catch (error) {
