@@ -17,8 +17,8 @@ const UserAvatar = () => {
               <Menu.Item>
                 <div>
                   <div className="border-l-4 border-PURPLE50 px-3">
-                    <p className=" text-GREY100 font-semibold text-xl">{user.user_metadata.full_name}</p>
-                    <p className=" text-GREY100 font-medium text-xs">{user.email}</p>
+                    <p className=" text-GREY100 font-semibold text-xl">{user?.user_metadata.full_name}</p>
+                    <p className=" text-GREY100 font-medium text-xs">{user?.email}</p>
                   </div>
 
                   <div className="flex justify-end">
@@ -36,7 +36,7 @@ const UserAvatar = () => {
 
         <Menu.Button>
           <div className="w-20 h-20 cursor-pointer rounded-full border-white overflow-hidden border-2">
-            <img referrerPolicy="no-referrer" className="w-full h-full" src={user.user_metadata.avatar_url || ""} alt={user?.user_metadata.full_name} /> 
+            <img referrerPolicy="no-referrer" className="w-full h-full" src={user?.user_metadata.avatar_url || ""} alt={user?.user_metadata.full_name} /> 
           </div>
          </Menu.Button>
       </Menu>

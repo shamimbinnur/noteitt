@@ -1,20 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { AuthUser } from '@supabase/supabase-js'
-import supabase from '../../../config/supabaseClient'
 
 export interface UserState {
-  user: any
+  user: AuthUser | null
+  isLoading: boolean
 }
 
 const initialState: UserState = {
   user: null,
+  isLoading: false
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload
+    },
     updateUser: (state, action: PayloadAction<AuthUser>) => {
       state.user = action.payload
     },
@@ -25,6 +29,6 @@ export const userSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { updateUser, logout } = userSlice.actions
+export const { setLoading, updateUser, logout } = userSlice.actions
 
 export default userSlice.reducer

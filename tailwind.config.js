@@ -24,6 +24,9 @@ module.exports = {
       },
       backgroundImage: {
         'radial-shaddow': "url('../src/assets/RadialShaddow.svg')",
+      },
+      animation: {
+        'spin-fast': 'spin .2s linear infinite',
       }
     },
   },

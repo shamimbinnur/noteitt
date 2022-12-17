@@ -34,7 +34,7 @@ export const useFetchNotes = () => {
         const { data, error } = await supabase
         .from('notes')
         .select()
-        .eq('authorId', user.id)
+        .eq('authorId', user?.id)
         .order('created_at', { ascending: false })
         if (data) {
           dispatch(updateAllNotes(data))

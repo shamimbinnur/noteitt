@@ -8,10 +8,15 @@ import Landing from './pages/Landing';
 import { RootState } from './store/store';
 import { useSelector } from 'react-redux';
 import GuestAccess from './pages/GuestAccess';
+import Loader from './components/Loader';
 
 function App() {
   useAuthenticate()
-  const { user } = useSelector((state: RootState) => state.user)
+  const { user, isLoading } = useSelector((state: RootState) => state.user)
+
+  if (isLoading) {
+    return <Loader/>
+  }
 
   return (
     <>
