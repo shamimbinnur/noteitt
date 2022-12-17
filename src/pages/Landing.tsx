@@ -1,27 +1,27 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import supabase from '../config/supabaseClient'
 import { RootState } from '../store/store'
 
 const Landing = () => {
-  const { user }  =  useSelector((state: RootState) => state.user)
+
+  const { user }  =  useSelector((state: RootState) => state.user);
   
-  const navigate = useNavigate()
-  const handleLogin = () => {
-    console.log("login")
-    navigate('/login')
+  const signInWithGoogle = async ()=> {
+
+     await supabase.auth.signInWithOAuth({ provider: 'google', })
+
   }
 
-  if (user) return <Navigate to="/login" />
+  if ( user ) return <Navigate to="/app" />
 
   return (
     <div>
-      <div>
-        GuestAccess
-      </div>
-      <button onClick={handleLogin}>Login</button>
+      <h1> Noice Landing Page! </h1>
+      <button onClick={signInWithGoogle}>Login</button>
     </div>
   )
 }
 
-export default Landing
+export default Landing;
