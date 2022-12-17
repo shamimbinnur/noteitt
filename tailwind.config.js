@@ -20,6 +20,7 @@ module.exports = {
         GREY50: "#464646",
         GREY100: "#3D3D3D",
         CYAN100: "#00AAE0",
+        CYAN10: "#CCF3FF",
       },
       backgroundImage: {
         'radial-shaddow': "url('../src/assets/RadialShaddow.svg')",
