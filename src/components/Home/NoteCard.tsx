@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from 'react'
 import { NoteProps } from '../../types/types'
 import Coppy from '../buttons/Coppy'
+import Edit from '../buttons/Edit'
+import Share from '../buttons/Share'
 
 let slectionStyles = "outline-lime-400 rounded-md outline-[1.5px]  "
 
@@ -14,8 +16,10 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
 
   return (
     <div className="">
-      <div className="h-12 border-2">
+      <div className="h-12 border-2 flex items-center gap-x-2">
         <Coppy/>
+        <Edit/>
+        <Share/>
       </div>
       <div className="rounded-2xl w-[360px] p-4 border-4 border-CYAN100 h-56 bg-white shadow-md">
 
