@@ -4,9 +4,9 @@ interface Props {
   children: ReactNode
 }
 
-const HomeBackround:FC<Props> = ({children}) => {
+const PrimaryBackground:FC<Props> = ({children}) => {
   return (
-    <div className="bg-gradient-to-br from-BLUE100 via-BLUE50 to-CYAN100 h-screen">
+    <div className="bg-gradient-to-br from-BLUE100 via-PURPLE50 to-CYAN100 h-screen">
       <div className="bg-radial-shaddow bg-center bg-no-repeat h-screen">
         {children}
       </div>
@@ -14,4 +14,4 @@ const HomeBackround:FC<Props> = ({children}) => {
   )
 }
 
-export default HomeBackround
+export default PrimaryBackground

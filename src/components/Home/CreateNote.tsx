@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../store/store'
-import { useSupabaseCRUD } from '../hooks/useSupabaseCRUD'
+import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
+import { RootState } from '../../store/store'
 
 const CreateNote:FC = () => {
 

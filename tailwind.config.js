@@ -23,7 +23,7 @@ module.exports = {
         CYAN10: "#CCF3FF",
       },
       backgroundImage: {
-        'radial-shaddow': "url('../src/assets/RadialShaddow.svg')",
+        'radial-shaddow': "url('../src/assets/svg/RadialShaddow.svg')",
       },
       animation: {
         'spin-fast': 'spin .2s linear infinite',

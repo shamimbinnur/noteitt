@@ -8,34 +8,45 @@ export interface Notes {
 }
 
 export interface NoteState {
+  isNoteInitialized: boolean
   isLoading: boolean
   notes: Notes[]
   error: PostgrestError
 }
 
 const initialState: NoteState = {
+  isNoteInitialized: false,
   isLoading: false,
   notes: [],
-  error: null as unknown as PostgrestError,
+  error: null as unknown as PostgrestError
 }
 
 export const noteSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
+    setNoteInitialized: (state, action: PayloadAction<boolean>) => {
+
+      state.isNoteInitialized = action.payload
+
+    },
     setLoading: (state, action: PayloadAction<boolean>) => {
+
       state.isLoading = action.payload
+
     },
     updateAllNotes: (state, action: PayloadAction<Notes[]>) => {
+
       state.notes = action.payload
+
     },
     updateError: (state, action: PayloadAction<PostgrestError>) => {
+
       state.error = action.payload
+
     }
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { setLoading, updateAllNotes, updateError } = noteSlice.actions
-
-export default noteSlice.reducer
+export const { setNoteInitialized, setLoading, updateAllNotes, updateError } = noteSlice.actions;
+export default noteSlice.reducer;
