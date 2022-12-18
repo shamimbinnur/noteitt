@@ -16,7 +16,7 @@ const UserAvatar = () => {
             <div className="bg-white p-4 bg-gradient-to-b w-[15rem] from-CYAN10 to-GREY10 rounded-md mb-3 mr-6 shadow-md">
               <Menu.Item>
                 <div>
-                  <div className="border-l-4 border-PURPLE50 px-3">
+                  <div className="border-l-4 border-opacity-60 border-PURPLE50 px-3">
                     <p className=" text-GREY100 font-semibold text-xl">{user?.user_metadata.full_name}</p>
                     <p className=" text-GREY100 font-medium text-xs">{user?.email}</p>
                   </div>
