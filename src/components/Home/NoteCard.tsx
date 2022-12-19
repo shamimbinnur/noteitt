@@ -5,6 +5,7 @@ import Coppy from '../buttons/Coppy'
 import Delete from '../buttons/Delete'
 import Edit from '../buttons/Edit'
 import Share from '../buttons/Share'
+import LastModified from '../labels/LastModified'
 
 let slectionStyles = "outline-lime-400 rounded-md outline-[1.5px]  "
 
@@ -25,9 +26,13 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
         <Share/>
         <Delete/>
       </div>
-      <div className="rounded-2xl w-[360px] p-4 border-4 border-CYAN100 h-56 bg-white shadow-md">
 
-        <div className="">
+      <div className="rounded-2xl w-[360px] p-4 border-4 border-CYAN100 h-56 bg-white shadow-md">
+        <div className="flex justify-end">
+          <LastModified/>
+        </div>
+
+        <div className="py-1">
           <textarea className="py-2 px-1 w-full" value={title} ></textarea>
         </div>
 
@@ -36,6 +41,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
         <div className="">
           <textarea className="py-2 px-1 w-full" value={noteDetails}></textarea>
         </div>
+
       </div>
 
     </div>
