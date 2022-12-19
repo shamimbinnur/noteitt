@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { NoteProps } from '../../types/types'
 import Color from '../buttons/Color'
 import Coppy from '../buttons/Coppy'
+import Delete from '../buttons/Delete'
 import Edit from '../buttons/Edit'
 import Share from '../buttons/Share'
 
@@ -22,6 +23,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
         <Edit/>
         <Share/>
         <Color/>
+        <Delete/>
       </div>
       <div className="rounded-2xl w-[360px] p-4 border-4 border-CYAN100 h-56 bg-white shadow-md">
 
