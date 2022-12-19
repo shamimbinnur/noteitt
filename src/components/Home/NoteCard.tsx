@@ -50,13 +50,13 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
         </div>
 
         <div className="py-2">
-          <textarea ref={titleRef} readOnly={isTextAreaReadOnly} className={`py-2 px-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
+          <textarea ref={titleRef} onChange={(e)=> setTitle(e.target.value)}  readOnly={isTextAreaReadOnly} className={`py-2 px-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
         </div>
 
         <div className="bg-GREY50 bg-opacity-20 h-[2px]"></div>
 
         <div className="">
-          <textarea ref={detailRef} readOnly={isTextAreaReadOnly} className={`py-2 px-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
+          <textarea ref={detailRef} onChange={(e)=> setNoteDetails(e.target.value)} readOnly={isTextAreaReadOnly} className={`py-2 px-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
         </div>
       </div>
 
