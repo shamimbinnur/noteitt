@@ -27,6 +27,9 @@ module.exports = {
       },
       animation: {
         'spin-fast': 'spin .2s linear infinite',
+        'bounce-slow': 'bounce 1s infinite',
+        'bounce-mid': 'bounce .9s infinite;',
+        'bounce-fast': 'bounce .8s infinite',
       }
     },
   },
