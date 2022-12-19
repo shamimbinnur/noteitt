@@ -17,7 +17,6 @@ const Share:FC = () => {
         <FaShareAlt  className=" w-full h-full text-orange-500 animate-pulse group-hover:text-BLUE100 transition-all"/> :
         <TbShareOff  className=" w-full h-full text-BLUE50 group-hover:text-BLUE100 transition-all"/>
       }
-      
     </div>
   )
 }
