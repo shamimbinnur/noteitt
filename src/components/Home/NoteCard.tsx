@@ -19,10 +19,10 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   return (
     <div className="">
       <div className="h-12 flex items-center gap-x-2 px-2">
-        <Coppy/>
         <Edit/>
-        <Share/>
         <Color/>
+        <Coppy/>
+        <Share/>
         <Delete/>
       </div>
       <div className="rounded-2xl w-[360px] p-4 border-4 border-CYAN100 h-56 bg-white shadow-md">
