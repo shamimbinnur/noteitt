@@ -30,10 +30,12 @@ const Color = () => {
             <div className="absolute my-1 ml-2 p-1 flex gap-x-1 bg-white bg-gradient-to-b from-CYAN10 to-GREY10 rounded-md shadow-md">
             {
               colors.map ( color => (
-                <Menu.Item>
-                  <div className={`w-6 h-6 hover:scale-105 transition-all rounded-sm cursor-pointer ${color.colorCode}`}>
-                  </div>
-                </Menu.Item>
+                <div key={color.text}>
+                  <Menu.Item>
+                    <div className={`w-6 h-6 hover:scale-105 transition-all rounded-sm cursor-pointer ${color.colorCode}`}>
+                    </div>
+                  </Menu.Item>
+                </div>
               ))
             }
             </div>

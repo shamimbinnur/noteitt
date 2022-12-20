@@ -20,8 +20,8 @@ const NotesWrapper = () => {
         }
         {
           notes && 
-          notes.map( (note) => (
-            <div>
+          notes.map( (note ) => (
+            <div key={ note.id}>
               <NoteCard note={note as NoteProps}/>
             </div>
           ))

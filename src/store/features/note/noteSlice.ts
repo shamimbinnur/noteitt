@@ -1,16 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { PostgrestError } from '@supabase/supabase-js'
-
-export interface Notes {
-  title: string
-  details: string
-}
+import { NoteProps } from '../../../types/types'
 
 export interface NoteState {
   isNoteInitialized: boolean
   isLoading: boolean
-  notes: Notes[]
+  notes: NoteProps[]
   error: PostgrestError
 }
 
@@ -35,7 +31,7 @@ export const noteSlice = createSlice({
       state.isLoading = action.payload
 
     },
-    updateAllNotes: (state, action: PayloadAction<Notes[]>) => {
+    updateAllNotes: (state, action: PayloadAction<NoteProps[]>) => {
 
       state.notes = action.payload
 

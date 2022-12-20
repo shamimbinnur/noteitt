@@ -11,8 +11,7 @@ import Share from '../buttons/Share'
 import LastModified from '../labels/LastModified'
 import Typing from '../labels/Typing'
 
-let slectionStyles = "outline-lime-400 rounded-md outline-[1.5px]  "
-
+let slectionStyles = "outline-lime-400 rounded-md outline-[1.5px]"
 export interface NoteCardProps {
   note: NoteProps
 }
@@ -22,15 +21,16 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   const [noteDetails, setNoteDetails] = useState("")
   const [isTextAreaReadOnly, setTextAreaReadOnly] = useState(true)
   const [isTyping, setIsTyping] = useState(false)
-  const [outline, setOutline] = useState("outline-CYAN10")
+  const [isCardSelected, setCardSelected] = useState(false)
+  
+  const titleRef = useRef<any>("")
+  const detailRef = useRef<any>("")
+  // const cardRef = useRef<any>("")
 
   const { deleteNote, updateSpecificNote } = useSupabaseCRUD()
   const debouncedTitle = useDebounce<string>(title, 1000)
   const debouncedDetails = useDebounce<string>(noteDetails, 1000)
-
-  const titleRef = useRef<any>("")
-  const detailRef = useRef<any>("")
-
+  
   useEffect(() => {
 
     setTitle(note.title)
@@ -45,7 +45,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
 
   const updateRealtime = async () => {
     if ( !isTextAreaReadOnly && ( title !== note.title || noteDetails !== note.details ) ) {
-      
+
         await updateSpecificNote({title: title, details: noteDetails}, note.id)
 
       }
@@ -62,7 +62,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   }
 
   return (
-    <div className="">
+    <div>
       <div className="h-12 flex items-center gap-x-2 px-2">
         <div onClick={handleEditClick}>
           <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
@@ -84,16 +84,15 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
         </div>
 
         <div className="mt-2">
-          <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
+          <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
         </div>
 
         <div className="bg-GREY50 bg-opacity-20 h-[2px] mb-[8px] mt-[2px]"></div>
 
         <div className="">
-          <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-1 h-[6.5rem] w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
+          <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
         </div>
       </div>
-
     </div>
   )
 }
