@@ -5,6 +5,7 @@ import NoteCard from '../components/Home/NoteCard'
 import { NoteProps } from '../types/types'
 import { useFetchNotes } from '../hooks/useFetchNotes'
 import NoteSkeleton from './NoteSkeleton'
+import CreateNote from '../components/Home/CreateNote'
 
 const NotesWrapper = () => {
   
@@ -14,7 +15,7 @@ const NotesWrapper = () => {
   return (
     <div className="h-full">
       <div className="flex flex-wrap justify-center gap-4">
-        {/* <CreateNote/> */}
+        <CreateNote/>
         {
           !isNoteInitialized && isLoading && <NoteSkeleton/>
         }

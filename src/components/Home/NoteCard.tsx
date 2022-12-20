@@ -10,8 +10,6 @@ import Edit from '../buttons/Edit'
 import Share from '../buttons/Share'
 import LastModified from '../labels/LastModified'
 import Typing from '../labels/Typing'
-
-let slectionStyles = "outline-lime-400 rounded-md outline-[1.5px]"
 export interface NoteCardProps {
   note: NoteProps
 }
@@ -21,7 +19,6 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   const [noteDetails, setNoteDetails] = useState("")
   const [isTextAreaReadOnly, setTextAreaReadOnly] = useState(true)
   const [isTyping, setIsTyping] = useState(false)
-  const [isCardSelected, setCardSelected] = useState(false)
   
   const titleRef = useRef<any>("")
   const detailRef = useRef<any>("")
@@ -52,10 +49,12 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   }
   
   const handleEditClick = () => {
+
     setTextAreaReadOnly(!isTextAreaReadOnly)
     detailRef.current.focus()
 
     setTimeout(() => {
+
       titleRef.current.focus()
       
     }, 300);
@@ -82,15 +81,14 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           }
           <LastModified/>
         </div>
-
         <div className="mt-2">
-          <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
+          <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full disabled:bg-inherit text-md leading-tight font-medium text-gray-800 ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
         </div>
 
         <div className="bg-GREY50 bg-opacity-20 h-[2px] mb-[8px] mt-[2px]"></div>
 
         <div className="">
-          <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
+          <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full disabled:bg-inherit text-md text-gray-700 font-medium leading-tight ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
         </div>
       </div>
     </div>
