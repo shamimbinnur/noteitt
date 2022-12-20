@@ -1,9 +1,11 @@
 import React from 'react'
+import NewNote from '../components/labels/NewNote';
 
 const NoteSkeleton = () => {
   return (
     <div className=" animate-pulse">
       <div className="h-12 flex items-center gap-x-2 px-2">
+        <NewNote/>
       </div>
 
       <div className="rounded-2xl w-[360px] p-4 border-4 border-CYAN100 h-[245px] bg-white shadow-md">
