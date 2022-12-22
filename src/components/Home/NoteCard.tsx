@@ -1,8 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
+import { setSelectedCard } from '../../store/features/card/cardSlice'
+import { RootState } from '../../store/store'
 import { NoteProps } from '../../types/types'
 import useDebounce from '../../utils/useDebounce'
+import Cancel from '../buttons/Cancel'
 import Color from '../buttons/Color'
 import Coppy from '../buttons/Coppy'
 import Delete from '../buttons/Delete'
@@ -15,6 +19,9 @@ export interface NoteCardProps {
 }
 
 const NoteCard:FC<NoteCardProps> = ({ note }) => {
+
+  const { selectedCard } = useSelector((state: RootState) => state.card);
+
   const [title, setTitle] = useState("")
   const [noteDetails, setNoteDetails] = useState("")
   const [isTextAreaReadOnly, setTextAreaReadOnly] = useState(true)
@@ -22,8 +29,8 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   
   const titleRef = useRef<any>("")
   const detailRef = useRef<any>("")
-  // const cardRef = useRef<any>("")
 
+  const dispatch = useDispatch()
   const { deleteNote, updateSpecificNote } = useSupabaseCRUD()
   const debouncedTitle = useDebounce<string>(title, 1000)
   const debouncedDetails = useDebounce<string>(noteDetails, 1000)
@@ -47,6 +54,10 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
 
       }
   }
+
+  const handleCardClick = () => {
+    dispatch(setSelectedCard(note.id))
+  }
   
   const handleEditClick = () => {
 
@@ -62,17 +73,27 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
 
   return (
     <div>
-      <div className="h-12 flex items-center gap-x-2 px-2">
-        <div onClick={handleEditClick}>
-          <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
-        </div>
-        <Color/>
-        <Coppy/>
-        <Share/>
-        <Delete/>
+      <div className="h-12 flex items-center">
+        {
+          selectedCard === note.id ? (
+            <div className="flex w-full justify-between">
+              <div className="flex items-center gap-x-2 px-2">
+                <div onClick={handleEditClick}>
+                  <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
+                </div>
+                <Color/>
+                <Coppy/>
+                <Share/>
+                <Delete/>
+              </div>
+
+              <Cancel/>
+            </div>
+          ) : ""
+        }
       </div>
 
-      <div className="rounded-2xl w-[360px] p-4 border-4 bg-paper-texture bg-cover bg-center border-CYAN100 h-[245px] bg-white shadow-md">
+      <div onClick={handleCardClick} className="rounded-2xl w-[360px] p-4 border-4 bg-paper-texture bg-cover bg-center border-CYAN100 h-[245px] bg-white shadow-md">
         <div className="flex justify-between">
           {
           isTyping ?

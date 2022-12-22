@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface CardState {
-  selectedCard: string | null
+  selectedCard: string | null | number
 }
 
 const initialState: CardState = {
@@ -13,7 +13,7 @@ export const CardSlice = createSlice({
   name: 'card',
   initialState,
   reducers: {
-    setSelectedCard: (state, action: PayloadAction<string | null>) => {
+    setSelectedCard: (state, action: PayloadAction<string | null | number>) => {
       state.selectedCard = action.payload
     },
   },
