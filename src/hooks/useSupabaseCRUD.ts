@@ -16,11 +16,11 @@ const createNote = async (noteData: NoteInfo, authorId: string) => {
 //Function to delete a note from the Database
 //Param(id): Specific note's ID
 
-const deleteNote = async (id: number) => {
+const deleteNote = async (uuid: string) => {
     const data = await supabase
     .from('notes')
     .delete()
-    .eq('id', id)
+    .eq('uuid', uuid)
     .select('title')
     
     return data;
@@ -35,6 +35,18 @@ const updateSpecificNote = async (noteInfo: NoteInfo, noteId: number) => {
     .from('notes')
     .update({title: noteInfo.title, details: noteInfo.details})
     .eq('id', noteId)
+    .select()
+  
+    return data;
+}
+// Funtion to update a note
+//Param(2): noteInfo: NoteInfo, noteId: number
+
+const setPublicMode = async (uuid: string, mode: boolean) => {
+    const data = await supabase
+    .from('notes')
+    .update({ isPublic: mode })
+    .eq('uuid', uuid)
     .select()
   
     return data;
@@ -54,4 +66,4 @@ const fetchGuestNote = async ( noteUUID: string | undefined) => {
     return data
 }
 
-export const useSupabaseCRUD = () =>  ({ createNote, deleteNote, updateSpecificNote, fetchGuestNote })
+export const useSupabaseCRUD = () =>  ({ createNote, deleteNote, updateSpecificNote, setPublicMode, fetchGuestNote })

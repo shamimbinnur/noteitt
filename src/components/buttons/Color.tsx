@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Menu } from '@headlessui/react'
 import { IoMdColorPalette } from 'react-icons/io'
 
-const Color = () => {
+interface Props {
+  noteUUID: string
+}
+
+const Color:FC<Props> = ({ noteUUID }) => {
 
   const colors = [
     {

@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Menu } from '@headlessui/react'
 import { AiFillDelete } from 'react-icons/ai'
 import { BiCheck, BiX } from 'react-icons/bi'
+import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
 
-const Delete = () => {
+interface Props {
+  noteUUID: string
+}
+
+const Delete:FC <Props> = ({ noteUUID }) => {
+
+  const { deleteNote } = useSupabaseCRUD()
 
   return (
     <div className="flex items-end justify-end relative">
@@ -11,7 +18,7 @@ const Delete = () => {
           <Menu.Items>
             <div className="absolute my-1 ml-1 px-1 py-1 flex gap-x-1 bg-white bg-gradient-to-b from-CYAN10 to-GREY10 rounded-md shadow-md">
                 <Menu.Item>
-                  <div className="w-6 h-6 flex items-center justify-center bg-red-400 text-white hover:bg-red-500 hover:scale-105 transition-all rounded-sm cursor-pointer">
+                  <div onClick={ async()=> await deleteNote(noteUUID) } className="w-6 h-6 flex items-center justify-center bg-red-400 text-white hover:bg-red-500 hover:scale-105 transition-all rounded-sm cursor-pointer">
                     <BiCheck/>
                   </div>
                 </Menu.Item>

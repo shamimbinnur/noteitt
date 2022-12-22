@@ -56,7 +56,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   }
 
   const handleCardClick = () => {
-    dispatch(setSelectedCard(note.id))
+    dispatch(setSelectedCard(note.uuid))
   }
   
   const handleEditClick = () => {
@@ -75,16 +75,16 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
     <div>
       <div className="h-12 flex items-center">
         {
-          selectedCard === note.id ? (
+          selectedCard === note.uuid ? (
             <div className="flex w-full justify-between">
               <div className="flex items-center gap-x-2 px-2">
                 <div onClick={handleEditClick}>
                   <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
                 </div>
-                <Color/>
-                <Coppy/>
-                <Share/>
-                <Delete/>
+                <Color noteUUID={note.uuid}/>
+                <Coppy noteUUID={note.uuid}/>
+                <Share publicMode={note.isPublic} noteUUID={note.uuid}/>
+                <Delete noteUUID={note.uuid}/>
               </div>
 
               <Cancel/>
