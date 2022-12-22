@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { FaShareAlt } from 'react-icons/fa'
 import { TbShareOff } from 'react-icons/tb'
 import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'

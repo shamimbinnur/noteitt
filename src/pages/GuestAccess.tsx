@@ -42,6 +42,7 @@ const GuestAccess = () => {
 
     return (
         <div>
+            {noteState.note?.title}
         </div>
     )
 }
