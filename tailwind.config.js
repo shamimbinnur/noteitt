@@ -24,6 +24,7 @@ module.exports = {
       },
       backgroundImage: {
         'radial-shaddow': "url('../src/assets/svg/RadialShaddow.svg')",
+        'paper-texture': "url('../src/assets/image/paper-texture.jpg')",
       },
       animation: {
         'spin-fast': 'spin .2s linear infinite',
