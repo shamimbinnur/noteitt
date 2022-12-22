@@ -10,7 +10,7 @@ const UserAvatar = () => {
   const handleLogout = async () => await supabase.auth.signOut();
 
   return (
-    <div className="flex absolute bottom-8 right-8 table:bottom-10 tablet:right-10 flex-col items-end justify-end">
+    <div className="flex fixed bottom-8 right-8 table:bottom-10 tablet:right-10 flex-col items-end justify-end">
       <Menu>
           <Menu.Items>
             <div className="bg-white p-4 bg-gradient-to-b w-[15rem] from-CYAN10 to-GREY10 rounded-md mb-3 mr-6 shadow-md">
