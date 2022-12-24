@@ -45,13 +45,13 @@ const CreateNote:FC = () => {
           <NewNote/>
         </div>
 
-        <div className="mt-2">
+        <div className="mt-2 font-lato">
           <textarea placeholder="Title here"onChange={(e)=> { setTitle(e.target.value)}} className="px-2 py-1  w-full bg-transparent disabled:bg-inherit outline-CYAN100 text-md text-gray-700 font-medium leading-tight" value={title} ></textarea>
         </div>
 
         <div className="bg-GREY50 bg-opacity-20 h-[2px] mb-[8px] mt-[2px]"></div>
 
-        <div className="">
+        <div className="font-lato">
           <textarea placeholder="Detail here" onChange={(e)=> { setNoteDetails(e.target.value) }} className="px-2 py-1 h-[4.5rem] bg-transparent w-full disabled:bg-inherit outline-CYAN100 text-md text-gray-700 font-medium leading-tight" value={noteDetails}></textarea>
         </div>
 

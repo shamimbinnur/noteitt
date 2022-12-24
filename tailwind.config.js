@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sono: ["Sono", "sans-serif"],
-        rubik: ["Rubik", "sans-serif"]
+        rubik: ["Rubik", "sans-serif"],
+        lato: ["Lato", "sans-serif"]
       },
       colors: {
         RED50: "#FF6666",
