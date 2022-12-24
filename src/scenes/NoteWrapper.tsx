@@ -14,7 +14,7 @@ const NotesWrapper = () => {
 
   return (
     <div className="h-full">
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
         <CreateNote/>
         {
           !isNoteInitialized && isLoading && <NoteSkeleton/>
