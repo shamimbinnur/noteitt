@@ -12,7 +12,7 @@ import Coppy from '../buttons/Coppy'
 import Delete from '../buttons/Delete'
 import Edit from '../buttons/Edit'
 import Share from '../buttons/Share'
-import LastModified from '../labels/LastModified'
+import CreatedAt from '../labels/CreatedAt'
 import Typing from '../labels/Typing'
 export interface NoteCardProps {
   note: NoteProps
@@ -31,12 +31,11 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   const detailRef = useRef<any>("")
 
   const dispatch = useDispatch()
-  const { deleteNote, updateSpecificNote } = useSupabaseCRUD()
+  const { updateSpecificNote } = useSupabaseCRUD()
   const debouncedTitle = useDebounce<string>(title, 1000)
   const debouncedDetails = useDebounce<string>(noteDetails, 1000)
   
   useEffect(() => {
-
     setTitle(note.title)
     setNoteDetails(note.details)
 
@@ -113,7 +112,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           <Typing/> :
           <div></div>
           }
-          <LastModified/>
+          <CreatedAt dateTime={note.created_at} />
         </div>
         <div className="my-2">
           <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit text-md leading-tight font-medium text-gray-800 ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
