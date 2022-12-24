@@ -1,12 +1,15 @@
 import React, { FC } from 'react'
 import { Menu } from '@headlessui/react'
 import { IoMdColorPalette } from 'react-icons/io'
+import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
 
 interface Props {
   noteUUID: string
 }
 
 const Color:FC<Props> = ({ noteUUID }) => {
+
+  const { setNoteColor } = useSupabaseCRUD();
 
   const colors = [
     {
@@ -18,14 +21,18 @@ const Color:FC<Props> = ({ noteUUID }) => {
       colorCode: "bg-PURPLE100"
     },
     {
-      text: "red",
-      colorCode: "bg-RED50"
+      text: "orange",
+      colorCode: "bg-orange-400"
     },
     {
       text: "cyan",
       colorCode: "bg-CYAN100"
     },
   ]
+
+  const handleClick = async (noteUUID: string, color: string) => {
+    await setNoteColor(noteUUID, color);
+  }
 
   return (
     <div className="flex items-end justify-end relative">
@@ -36,7 +43,7 @@ const Color:FC<Props> = ({ noteUUID }) => {
               colors.map ( color => (
                 <div key={color.text}>
                   <Menu.Item>
-                    <div className={`w-6 h-6 hover:scale-105 transition-all rounded-sm cursor-pointer ${color.colorCode}`}>
+                    <div onClick={ async() => handleClick(noteUUID, color.text)} className={`w-6 h-6 hover:scale-105 transition-all rounded-sm cursor-pointer ${color.colorCode}`}>
                     </div>
                   </Menu.Item>
                 </div>

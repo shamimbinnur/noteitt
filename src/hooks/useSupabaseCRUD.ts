@@ -39,13 +39,25 @@ const updateSpecificNote = async (noteInfo: NoteInfo, noteId: number) => {
   
     return data;
 }
-// Funtion to update a note
-//Param(2): noteInfo: NoteInfo, noteId: number
+// Funtion to to toggle note shareable mode
+//Param(2): uuid: string, mode: boolean
 
 const setPublicMode = async (uuid: string, mode: boolean) => {
     const data = await supabase
     .from('notes')
-    .update({ isPublic: mode })
+    .update({ isPublic : mode })
+    .eq('uuid', uuid)
+    .select()
+  
+    return data;
+}
+// Funtion to to set note color
+//Param(2): uuid: string, color: string
+
+const setNoteColor = async (uuid: string, color: string) => {
+    const data = await supabase
+    .from('notes')
+    .update({ color: color })
     .eq('uuid', uuid)
     .select()
   
@@ -66,4 +78,4 @@ const fetchGuestNote = async ( noteUUID: string | undefined) => {
     return data
 }
 
-export const useSupabaseCRUD = () =>  ({ createNote, deleteNote, updateSpecificNote, setPublicMode, fetchGuestNote })
+export const useSupabaseCRUD = () =>  ({ createNote, deleteNote, updateSpecificNote, setPublicMode, setNoteColor, fetchGuestNote })

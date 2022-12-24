@@ -71,6 +71,20 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
     }, 300);
   }
 
+  const getColorCode = (colorText: string) => {
+
+    switch (colorText) {
+
+      case "blue" : return "border-BLUE50"
+      case "purple" : return "border-PURPLE100"
+      case "orange" : return "border-orange-400"
+      case "cyan" : return "border-CYAN100"
+
+      default:
+        return "border-BLUE50";
+    }
+  }
+
   return (
     <div>
       <div className="h-12 flex items-center">
@@ -92,8 +106,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           ) : ""
         }
       </div>
-
-      <div onClick={handleCardClick} className="rounded-2xl w-[360px] p-4 border-4 bg-paper-texture bg-cover bg-center border-CYAN100 h-[245px] bg-white shadow-md">
+      <div onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-4 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 ${getColorCode(note.color)}`}>
         <div className="flex justify-between">
           {
           isTyping ?

@@ -12,6 +12,7 @@ export interface NoteProps {
     title: string,
     details: string,
     isPublic: boolean,
+    color: string
 }
 export interface GuestNoteProps {
     uuid: string
