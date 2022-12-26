@@ -69,11 +69,9 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
       
     }, 300);
   }
-  
+
   const getColorCode = (colorText: string) => {
-
     switch (colorText) {
-
       case "blue" : return "BLUE50"
       case "purple" : return "PURPLE100"
       case "orange" : return "orange-400"
@@ -105,7 +103,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           ) : ""
         }
       </div>
-      <div onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 border-${getColorCode(note.color)}`}>
+      <div onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 border-CYAN100 `}>
         <div className="flex justify-between">
           {
           isTyping ?
@@ -114,12 +112,12 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           }
           <CreatedAt colorCode={getColorCode(note.color)} dateTime={note.created_at} />
         </div>
-        <div className="my-2 font-rubik text-gray-600">
-          <div >
+        <div className="mt-2 font-rubik text-gray-600">
+          <div>
             <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight  ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
           </div>
 
-          <div className="">
+          <div>
             <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
           </div>
         </div>

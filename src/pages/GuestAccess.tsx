@@ -1,50 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import PrimaryBackground from '../components/Common/PrimaryBackground'
 import { useSupabaseCRUD } from '../hooks/useSupabaseCRUD'
 import { GuestNoteProps } from '../types/types'
+interface NoteState {
+  note: GuestNoteProps | null
+  error: object | null
+}
 
 const GuestAccess = () => {
-    const { id } = useParams()
-    const { fetchGuestNote } = useSupabaseCRUD()
+  const { id } = useParams()
+  const { fetchGuestNote } = useSupabaseCRUD()
 
-    
-    interface NoteState {
-        note: GuestNoteProps | null
-        error: object | null
+  const initialState = {
+    note: null,
+    error: null
+  }
+
+  const [noteState, setNoteState] = useState<NoteState>(initialState)
+
+  useEffect(()=>{
+    const fetchNote = async () => {
+      const { data, error } = await fetchGuestNote(id)
+      if(data) {
+        setNoteState({
+           note: data as unknown as GuestNoteProps,
+           error: null
+        })
+      }
+      else if (error) {
+        setNoteState({
+          note: null,
+          error: error
+        })
+      }
+      console.log(noteState)
     }
+    fetchNote()
+  },[])
 
-    const initialState = {
-        note: null,
-        error: null
-    }
+  return (
+    <div>
+        <PrimaryBackground>
 
-    const [noteState, setNoteState] = useState<NoteState>(initialState)
-
-    useEffect(()=>{
-        const fetchNote = async () => {
-            const { data, error } = await fetchGuestNote(id)
-            if(data) {
-                setNoteState({
-                    note: data as unknown as GuestNoteProps,
-                    error: null
-                })
-            }
-            else if(error) {
-                setNoteState({
-                    note: null,
-                    error: error
-                })
-            }
-            console.log(noteState)
-        }
-        fetchNote()
-    },[])
-
-    return (
-        <div>
-            {noteState.note?.title}
-        </div>
-    )
+        </PrimaryBackground>
+    </div>
+  )
 }
 
 export default GuestAccess
