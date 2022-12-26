@@ -39,7 +39,7 @@ const CreateNote:FC = () => {
       <div className="h-12 flex items-center gap-x-2 px-2">
       </div>
       
-      <div className="rounded-2xl w-[360px] p-4 border-4 bg-paper-texture bg-cover bg-center border-CYAN100 h-[245px] bg-white shadow-md">
+      <div className="rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center border-CYAN100 h-[245px] bg-white shadow-md">
 
         <div className="flex justify-end">
           <NewNote/>
