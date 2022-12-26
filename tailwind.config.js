@@ -8,7 +8,9 @@ module.exports = {
       fontFamily: {
         sono: ["Sono", "sans-serif"],
         rubik: ["Rubik", "sans-serif"],
-        lato: ["Lato", "sans-serif"]
+        lato: ["Lato", "sans-serif"],
+        tillana: ["Tillana", "cursive"],
+        delius: ["Delius", "cursive"]
       },
       colors: {
         RED50: "#FF6666",

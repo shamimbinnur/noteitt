@@ -69,12 +69,12 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
       
     }, 300);
   }
-
+  
   const getColorCode = (colorText: string) => {
 
     switch (colorText) {
 
-      case "blue" : return "ßBLUE50"
+      case "blue" : return "BLUE50"
       case "purple" : return "PURPLE100"
       case "orange" : return "orange-400"
       case "cyan" : return "CYAN100"
@@ -114,12 +114,14 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           }
           <CreatedAt colorCode={getColorCode(note.color)} dateTime={note.created_at} />
         </div>
-        <div className="my-2 font-lato ">
-          <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit text-md leading-tight font-medium text-gray-700 ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
-        </div>
+        <div className="my-2 font-rubik text-gray-600">
+          <div >
+            <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight  ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
+          </div>
 
-        <div className=" font-lato">
-          <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit text-md text-gray-700 font-medium leading-tight ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
+          <div className="">
+            <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
+          </div>
         </div>
       </div>
     </div>
