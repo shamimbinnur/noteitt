@@ -17,29 +17,23 @@ export const useFetchNotes = () => {
   },[])
 
   useEffect(() => {
-
     console.log("I started listening")
 
     supabase
     .channel('public:notes')
     .on('postgres_changes', { event: '*', schema: 'public', table: 'notes' }, payload => {
-
       updateState()
       console.log('Received!')
-
     })
     .subscribe()
 
     return () => {
-
       supabase.removeAllChannels()
-
     }
 
   },[])
 
   const updateState = async () => {
-
     dispatch(setLoading(true))
     
     try {
@@ -49,25 +43,20 @@ export const useFetchNotes = () => {
       .eq('authorId', user?.id)
       .order('created_at', { ascending: false })
       if (data) {
-
         dispatch(updateAllNotes(data))
         dispatch(updateError(null as unknown as PostgrestError))
         dispatch(setNoteInitialized(true))
         dispatch(setLoading(false))
-
       }
-      else if ( error) {
 
+      else if ( error) {
         dispatch(updateAllNotes([]));
         dispatch(updateError(error));
         dispatch(setLoading(false));
-
       }
       
     } catch (error) {
-
       console.log("Got while listening: ", error)
-
     }
   }
 }

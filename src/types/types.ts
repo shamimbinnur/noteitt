@@ -19,6 +19,8 @@ export interface GuestNoteProps {
     title: string,
     details: string,
     author: UserInfo
+    color: string
+    created_at: string
 }
 export interface NoteInfo {
     title: string
