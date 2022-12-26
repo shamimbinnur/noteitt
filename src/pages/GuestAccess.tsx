@@ -5,7 +5,7 @@ import CreatedAt from '../components/labels/CreatedAt'
 import supabase from '../config/supabaseClient'
 import { useSupabaseCRUD } from '../hooks/useSupabaseCRUD'
 import { GuestNoteProps } from '../types/types'
-import { getBorderColor } from '../utils/tailwindColor'
+import { getBackgroundColor, getBorderColor } from '../utils/tailwindColor'
 interface NoteState {
   note: GuestNoteProps | null
   error: object | null
@@ -61,18 +61,6 @@ const GuestAccess = () => {
     
   },[])
 
-  const getColorCode = (colorText: string) => {
-    switch (colorText) {
-      case "blue" : return "BLUE50"
-      case "purple" : return "PURPLE100"
-      case "orange" : return "orange-400"
-      case "cyan" : return "CYAN100"
-
-      default:
-        return "BLUE50";
-    }
-  }
-
   return (
     <div>
       <PrimaryBackground>
@@ -80,7 +68,7 @@ const GuestAccess = () => {
             <div  className={`rounded-2xl w-[660px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 border-CYAN100 ${getBorderColor(noteState.note?.color || "")} `}>
             <div className="flex justify-between">
               <div></div>
-              <CreatedAt colorCode={getColorCode(noteState.note?.color || "")} dateTime={noteState.note?.created_at || ""} />
+              <CreatedAt colorCode={getBackgroundColor(noteState.note?.color || "")} dateTime={noteState.note?.created_at || ""} />
             </div>
             <div className="mt-2 font-rubik text-gray-600">
               <div>

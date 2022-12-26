@@ -11,9 +11,7 @@ export const useFetchNotes = () => {
   const { user } = useSelector((state: RootState) => state.user)
 
   useEffect(() => {
-
     updateState()
-
   },[])
 
   useEffect(() => {
@@ -42,6 +40,7 @@ export const useFetchNotes = () => {
       .select()
       .eq('authorId', user?.id)
       .order('created_at', { ascending: false })
+      
       if (data) {
         dispatch(updateAllNotes(data))
         dispatch(updateError(null as unknown as PostgrestError))

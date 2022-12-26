@@ -11,33 +11,23 @@ const useAuthenticate = async() => {
     const dispatch = useDispatch();
 
     useEffect( () => {
-
         verifyUser();
-
     },[])
 
     useEffect(() => {
-
         supabase.auth.onAuthStateChange((event) => {
-
             if (event === "SIGNED_OUT") {
-
                 dispatch(logout());
-
             }
-
         })
-
     }, [])
 
 
     const verifyUser = async ()=> {
-
         dispatch(setLoading(true));
         const { data: { user } } = await supabase.auth.getUser();
         
         if(user) {
-            
             const userInfo: UserInfo = {
                 id: user?.id,
                 full_name: user?.user_metadata.full_name,

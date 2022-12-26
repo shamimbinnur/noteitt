@@ -6,7 +6,6 @@ import { RootState } from '../store/store'
 
 
 const Login = () => {
-
   const { user }  =  useSelector((state: RootState) => state.user)
   const location = useLocation()
   const navigate = useNavigate()
