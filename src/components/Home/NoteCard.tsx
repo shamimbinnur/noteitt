@@ -5,6 +5,7 @@ import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
 import { setSelectedCard } from '../../store/features/card/cardSlice'
 import { RootState } from '../../store/store'
 import { NoteProps } from '../../types/types'
+import { getBackgroundColor, getBorderColor } from '../../utils/tailwindColor'
 import useDebounce from '../../utils/useDebounce'
 import Cancel from '../buttons/Cancel'
 import Color from '../buttons/Color'
@@ -70,18 +71,6 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
     }, 300);
   }
 
-  const getColorCode = (colorText: string) => {
-    switch (colorText) {
-      case "blue" : return "BLUE50"
-      case "purple" : return "PURPLE100"
-      case "orange" : return "orange-400"
-      case "cyan" : return "CYAN100"
-
-      default:
-        return "BLUE50";
-    }
-  }
-
   return (
     <div>
       <div className="h-12 flex items-center">
@@ -103,14 +92,14 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           ) : ""
         }
       </div>
-      <div onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 border-CYAN100 `}>
+      <div onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 ${getBorderColor(note.color)}`}>
         <div className="flex justify-between">
           {
           isTyping ?
           <Typing/> :
           <div></div>
           }
-          <CreatedAt colorCode={getColorCode(note.color)} dateTime={note.created_at} />
+          <CreatedAt colorCode={getBackgroundColor(note.color)} dateTime={note.created_at} />
         </div>
         <div className="mt-2 font-rubik text-gray-600">
           <div>
