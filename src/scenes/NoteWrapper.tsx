@@ -6,7 +6,7 @@ import { NoteProps } from '../types/types'
 import { useFetchNotes } from '../hooks/useFetchNotes'
 import NoteSkeleton from './NoteSkeleton'
 import CreateNote from '../components/Home/CreateNote'
-import { motion, spring } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const NotesWrapper = () => {
   
@@ -18,7 +18,7 @@ const NotesWrapper = () => {
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 1, opacity: 1 }}
-        transition={{ delay: .5, type: 'spring' }}
+        transition={{ delay: .5, type:'spring', stiffness:150 }}
         className="flex flex-wrap justify-center gap-x-3 gap-y-1">
         {
           !isNoteInitialized && isLoading && <NoteSkeleton/>

@@ -73,7 +73,13 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   }
 
   return (
-    <div>
+    <AnimatePresence>
+    <motion.div
+      initial={{ x:-10, opacity:0, scale:0.90 }}
+      animate={{ x:1, opacity:1, scale:1 }}
+      transition={{ type: 'spring', stiffness: 150}}
+      exit={{ x:-10, opacity:0, scale:0.90 }}
+    >
       <div className="h-12 flex items-center">
         {
           selectedCard === note.uuid ? (
@@ -93,26 +99,45 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
           ) : ""
         }
       </div>
-      <div onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 ${getBorderColor(note.color)}`}>
-        <div className="flex justify-between">
+      <motion.div
+        whileHover={{
+          scale:1.009,
+          transition: { duration: .3 },
+        }}
+        whileTap={{ scale: 0.99 }}
+        onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 ${getBorderColor(note.color)}`}>
+        <motion.div
+        initial={{ x:-2, opacity:0 }}
+        animate={{ x:1, opacity:1 }}
+        transition={{ type: 'spring', duration: 1, delay: 0.2 }}
+        className="flex justify-between">
           {
           isTyping ?
           <Typing/> :
           <div></div>
           }
           <CreatedAt colorCode={getBackgroundColor(note.color)} dateTime={note.created_at} />
-        </div>
+        </motion.div>
         <div className="mt-2 font-rubik text-gray-600">
-          <div>
+          <motion.div
+          initial={{ x:-2, opacity: 0 }}
+          animate={{ x:1, opacity: 1 }}
+          transition={{ type: 'spring', duration: 1.2, delay: 0.2 }}
+          >
             <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight  ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+          initial={{ x:-2, opacity: 0 }}
+          animate={{ x:1, opacity: 1, scale:1 }}
+          transition={{ type: 'spring', duration: 1.2, delay: 0.2 }}
+          >
             <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+    </AnimatePresence>
   )
 }
 
