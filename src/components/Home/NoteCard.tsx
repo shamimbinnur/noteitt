@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
 import { setSelectedCard } from '../../store/features/card/cardSlice'

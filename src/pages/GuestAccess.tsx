@@ -72,11 +72,11 @@ const GuestAccess = () => {
             </div>
             <div className="mt-2 font-rubik text-gray-600">
               <div>
-                <textarea readOnly={true} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight outline-CYAN100 `} value={noteState.note?.title} ></textarea>
+                <textarea readOnly={true} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight outline-CYAN100 `} value={noteState.note?.title || ""} ></textarea>
               </div>
 
               <div>
-                <textarea readOnly={true} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit outline-CYAN100 `} value={noteState.note?.details}></textarea>
+                <textarea readOnly={true} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit outline-CYAN100 `} value={noteState.note?.details || ""}></textarea>
               </div>
             </div>
           </div>

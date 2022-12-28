@@ -35,7 +35,7 @@ const UserAvatar = () => {
           </Menu.Items>
 
         <Menu.Button>
-          <div className="w-20 h-20 cursor-pointer rounded-full border-white overflow-hidden border-2">
+          <div className="w-16 h-16 cursor-pointer rounded-full border-white overflow-hidden border-2">
             <img referrerPolicy="no-referrer" className="w-full h-full" src={user?.user_metadata.avatar_url || ""} alt={user?.user_metadata.full_name} /> 
           </div>
          </Menu.Button>
