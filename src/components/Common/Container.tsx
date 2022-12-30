@@ -6,7 +6,7 @@ interface Props {
 
 const Container:FC<Props> = ({children}) => {
   return (
-    <div className="px-6 py-6">
+    <div className="flex justify-center p-2">
       {children}
     </div>
   )

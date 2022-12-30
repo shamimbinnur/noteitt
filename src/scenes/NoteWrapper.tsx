@@ -14,26 +14,32 @@ const NotesWrapper = () => {
   const { isNoteInitialized, isLoading, notes } = useSelector((state: RootState) => state.note);
   
   return (
-    <div className="h-full">
+    <div className="w-full max-w-6xl justify-center flex">
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
+        initial={{ y: -10, opacity: 0 }}
         animate={{ y: 1, opacity: 1 }}
-        transition={{ delay: .5, type:'spring', stiffness:150 }}
-        className="flex flex-wrap justify-center gap-x-3 gap-y-1">
-        {
-          !isNoteInitialized && isLoading && <NoteSkeleton/>
-        }
-        <CreateNote/>
-        {
-          notes && 
-          notes.map( (note) => (
+        transition={{ delay: 0, type: 'spring', stiffness: 150 }}
+        className="flex justify-center flex-wrap gap-x-2 gap-y-1"
+      >
+          {!isNoteInitialized
+            && isLoading
+            && <NoteSkeleton/>
+          }
+
+          {isNoteInitialized
+          &&
+          <CreateNote/>
+          }
+          
+          {notes
+          && notes.map( (note) => (  
             <div key={ note.id}>
               <div>
                 <NoteCard note={note as NoteProps}/>
               </div>
             </div>
-          ))
-        }
+            ))
+          }
       </motion.div>
     </div>
   )

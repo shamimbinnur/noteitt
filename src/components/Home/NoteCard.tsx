@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSupabaseCRUD } from '../../hooks/useSupabaseCRUD'
 import { setSelectedCard } from '../../store/features/card/cardSlice'
@@ -49,11 +49,9 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   }, [debouncedTitle, debouncedDetails])
 
   const updateRealtime = async () => {
-    if ( !isTextAreaReadOnly && ( title !== note.title || noteDetails !== note.details ) ) {
-
-        await updateSpecificNote({title: title, details: noteDetails}, note.id)
-
-      }
+    if ( !isTextAreaReadOnly && ( title !== note.title || noteDetails !== note.details )) {
+      await updateSpecificNote({ title: title, details: noteDetails }, note.id)
+    }
   }
 
   const handleCardClick = () => {
@@ -61,29 +59,24 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
   }
   
   const handleEditClick = () => {
-
     setTextAreaReadOnly(!isTextAreaReadOnly)
     detailRef.current.focus()
 
     setTimeout(() => {
-
       titleRef.current.focus()
       
     }, 300);
   }
 
   return (
-    <AnimatePresence>
     <motion.div
-      initial={{ x:-10, opacity:0, scale:0.90 }}
-      animate={{ x:1, opacity:1, scale:1 }}
-      transition={{ type: 'spring', stiffness: 150}}
-      exit={{ x:-10, opacity:0, scale:0.90 }}
+      initial={{ x: -4, opacity: 1, scale: 1 }}
+      animate={{ x: 1, opacity: 1, scale: 1, rotate:[.5, 0] }}
+      transition={{ ease:'easeInOut' }}
     >
       <div className="h-12 flex items-center">
-        {
-          selectedCard === note.uuid ? (
-            <div className="flex w-full justify-between">
+        {selectedCard === note.uuid
+          ? (<div className="flex w-full justify-between">
               <div className="flex items-center gap-x-2 px-2">
                 <div onClick={handleEditClick}>
                   <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
@@ -93,51 +86,34 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
                 <Share publicMode={note.isPublic} noteUUID={note.uuid}/>
                 <Delete noteUUID={note.uuid}/>
               </div>
-
               <Cancel/>
-            </div>
-          ) : ""
+            </div>)
+          : ""
         }
       </div>
       <motion.div
-        whileHover={{
-          scale:1.009,
-          transition: { duration: .3 },
-        }}
-        whileTap={{ scale: 0.99 }}
-        onClick={handleCardClick} className={`rounded-2xl w-[360px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 ${getBorderColor(note.color)}`}>
-        <motion.div
-        initial={{ x:-2, opacity:0 }}
-        animate={{ x:1, opacity:1 }}
-        transition={{ type: 'spring', duration: 1, delay: 0.2 }}
-        className="flex justify-between">
-          {
-          isTyping ?
-          <Typing/> :
-          <div></div>
+        whileTap={{ scale: 0.95, transition: { ease:'easeOut', duration: 1 }}}
+        onClick={handleCardClick}
+        className={`rounded-2xl w-[350px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 ${getBorderColor(note.color)}`}
+      >
+        <div className="flex mt-2 justify-between">
+          {isTyping
+            ? <Typing/>
+            : <div></div>
           }
           <CreatedAt colorCode={getBackgroundColor(note.color)} dateTime={note.created_at} />
-        </motion.div>
-        <div className="mt-2 font-rubik text-gray-600">
-          <motion.div
-          initial={{ x:-2, opacity: 0 }}
-          animate={{ x:1, opacity: 1 }}
-          transition={{ type: 'spring', duration: 1.2, delay: 0.2 }}
-          >
-            <textarea ref={titleRef} onChange={(e)=> { setTitle(e.target.value); setIsTyping(true)}}  readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight  ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
-          </motion.div>
+        </div>
+        <div className="font-rubik text-gray-600">
+          <div>
+            <textarea ref={titleRef} onChange={(e)=> {setTitle(e.target.value); setIsTyping(true)}} readOnly={isTextAreaReadOnly} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={title} ></textarea>
+          </div>
 
-          <motion.div
-          initial={{ x:-2, opacity: 0 }}
-          animate={{ x:1, opacity: 1, scale:1 }}
-          transition={{ type: 'spring', duration: 1.2, delay: 0.2 }}
-          >
-            <textarea ref={detailRef} onChange={(e)=> { setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
-          </motion.div>
+          <div>
+            <textarea ref={detailRef} onChange={(e)=> {setNoteDetails(e.target.value); setIsTyping(true) }} readOnly={isTextAreaReadOnly} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit ${ isTextAreaReadOnly ? "outline-none " : "outline-CYAN100 "} `} value={noteDetails}></textarea>
+          </div>
         </div>
       </motion.div>
     </motion.div>
-    </AnimatePresence>
   )
 }
 
