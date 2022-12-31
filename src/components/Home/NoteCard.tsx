@@ -16,6 +16,7 @@ import Edit from '../buttons/Edit'
 import Share from '../buttons/Share'
 import CreatedAt from '../labels/CreatedAt'
 import Typing from '../labels/Typing'
+import SharingOption from '../buttons/SharingOption'
 export interface NoteCardProps {
   note: NoteProps
 }
@@ -82,8 +83,9 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
                   <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
                 </div>
                 <Color noteUUID={note.uuid}/>
-                <Coppy noteUUID={note.uuid}/>
-                <Share publicMode={note.isPublic} noteUUID={note.uuid}/>
+                {/* <Coppy noteUUID={note.uuid}/>
+                <Share publicMode={note.isPublic} noteUUID={note.uuid}/> */}
+                <SharingOption noteUUID={note.uuid} publicMode={note.isPublic}   />
                 <Delete noteUUID={note.uuid}/>
               </div>
               <Cancel/>

@@ -22,7 +22,7 @@ const Delete:FC <Props> = ({ noteUUID }) => {
             </Menu.Item>
             <Menu.Item>
               <div className="h-6 px-1 text-xs flex items-center justify-center bg-green-400 text-white hover:bg-green-500 hover:scale-105 transition-all rounded-sm cursor-pointer">
-                <p>Cancel</p>
+                <p>No</p>
               </div>
             </Menu.Item>
           </div>
@@ -30,7 +30,7 @@ const Delete:FC <Props> = ({ noteUUID }) => {
 
         <Menu.Button>
           <div className="bg-white w-7 h-7 p-1 rounded-full cursor-pointer group">
-            <AiFillDelete  className=" w-full h-full text-RED50 group-hover:text-RED100 transition-all"/>
+            <AiFillDelete className=" w-full h-full text-RED50 group-hover:text-RED100 transition-all"/>
           </div>
          </Menu.Button>
       </Menu>

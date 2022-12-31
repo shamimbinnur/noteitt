@@ -12,14 +12,14 @@ const Share:FC<Props> = ({ publicMode, noteUUID }) => {
   const { setPublicMode } = useSupabaseCRUD()
 
   const handleClick = async () => {
-    await setPublicMode( noteUUID, !publicMode,)
+    await setPublicMode(noteUUID, !publicMode,)
   }
 
   return (
-    <div onClick={handleClick} className="bg-white w-7 h-7 p-[5px] rounded-full cursor-pointer group">
+    <div onClick={handleClick} className="bg-white w-7 h-7 p-[5px] rounded-md cursor-pointer group">
       {publicMode
-      ? <FaShareAlt  className=" w-full h-full text-orange-500 animate-pulse group-hover:text-BLUE100 transition-all"/>
-      : <TbShareOff  className=" w-full h-full text-BLUE50 group-hover:text-BLUE100 transition-all"/>
+      ? <FaShareAlt  className="w-full h-full text-orange-600 animate-pulse group-hover:text-BLUE100 transition-all"/>
+      : <TbShareOff  className="w-full h-full text-BLUE50 group-hover:text-BLUE100 transition-all"/>
       }
     </div>
   )
