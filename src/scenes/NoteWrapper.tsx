@@ -4,7 +4,7 @@ import { RootState } from '../store/store'
 import NoteCard from '../components/Home/NoteCard'
 import { NoteProps } from '../types/types'
 import { useFetchNotes } from '../hooks/useFetchNotes'
-import NoteSkeleton from './NoteSkeleton'
+import LoaderSec from './LoaderSec'
 import CreateNote from '../components/Home/CreateNote'
 import { motion } from 'framer-motion'
 
@@ -20,10 +20,10 @@ const NotesWrapper = () => {
         animate={{ y: 1, opacity: 1 }}
         transition={{ delay: 0, type: 'spring', stiffness: 150 }}
         className="flex justify-center flex-wrap gap-x-2 gap-y-1"
-      >
+      >   
           {!isNoteInitialized
             && isLoading
-            && <NoteSkeleton/>
+            && <LoaderSec/>
           }
 
           {isNoteInitialized

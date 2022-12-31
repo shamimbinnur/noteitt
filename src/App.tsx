@@ -14,7 +14,7 @@ function App() {
   useAuthenticate()
   const { user, isLoading } = useSelector((state: RootState) => state.user)
 
-  if ( isLoading ) return <Loader/>
+  if (isLoading) return <Loader/>
 
   return (
     <>

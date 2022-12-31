@@ -42,13 +42,13 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
 
   }, [note.title, note.details])
 
-  useEffect( ()=> {
+  useEffect(()=> {
     setIsTyping(false)
     updateRealtime()
   }, [debouncedTitle, debouncedDetails])
 
   const updateRealtime = async () => {
-    if ( !isTextAreaReadOnly && ( title !== note.title || noteDetails !== note.details )) {
+    if ( !isTextAreaReadOnly && (title !== note.title || noteDetails !== note.details)) {
       await updateSpecificNote({ title: title, details: noteDetails }, note.id)
     }
   }

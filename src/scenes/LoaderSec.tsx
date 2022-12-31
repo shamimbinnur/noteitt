@@ -1,12 +1,12 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 
-const Loader = () => {
+const LoaderSec = () => {
   return (
     <motion.div
       initial={{opacity: 0, scale: 0}}
       animate={{opacity:1, scale: 1}}
-      className="flex mt-20 justify-center items-center gap-2"
+      className="flex pt-20 justify-center items-center gap-2"
     >
       <motion.div
         animate={{y: 8,}}
@@ -53,4 +53,4 @@ const Loader = () => {
   )
 }
 
-export default Loader;
+export default LoaderSec;
