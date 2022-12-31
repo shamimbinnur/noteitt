@@ -10,10 +10,8 @@ import { getBackgroundColor, getBorderColor } from '../../utils/tailwindColor'
 import useDebounce from '../../utils/useDebounce'
 import Cancel from '../buttons/Cancel'
 import Color from '../buttons/Color'
-import Coppy from '../buttons/Coppy'
 import Delete from '../buttons/Delete'
 import Edit from '../buttons/Edit'
-import Share from '../buttons/Share'
 import CreatedAt from '../labels/CreatedAt'
 import Typing from '../labels/Typing'
 import SharingOption from '../buttons/SharingOption'
@@ -77,7 +75,10 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
     >
       <div className="h-12 flex items-center">
         {selectedCard === note.uuid
-          ? (<div className="flex w-full justify-between">
+          ? (<motion.div
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            className="flex w-full justify-between">
               <div className="flex items-center gap-x-2 px-2">
                 <div onClick={handleEditClick}>
                   <Edit isTextAreaReadOnly={isTextAreaReadOnly} />
@@ -89,7 +90,7 @@ const NoteCard:FC<NoteCardProps> = ({ note }) => {
                 <Delete noteUUID={note.uuid}/>
               </div>
               <Cancel/>
-            </div>)
+            </motion.div>)
           : ""
         }
       </div>

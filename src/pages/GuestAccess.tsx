@@ -64,21 +64,27 @@ const GuestAccess = () => {
   return (
     <div>
       <PrimaryBackground>
-        <div className="flex justify-center pt-10">
+        <div className="flex justify-center pt-10 px-4">
             <div  className={`rounded-2xl w-[660px] p-4 border-2 bg-paper-texture bg-cover bg-center h-[245px] bg-white shadow-md border-opacity-95 border-CYAN100 ${getBorderColor(noteState.note?.color || "")} `}>
             <div className="flex justify-between">
               <div></div>
-              <CreatedAt colorCode={getBackgroundColor(noteState.note?.color || "")} dateTime={noteState.note?.created_at || ""} />
+              {noteState.note
+                && <CreatedAt colorCode={getBackgroundColor(noteState.note?.color || "")} dateTime={noteState.note?.created_at || ""} />
+              }
             </div>
-            <div className="mt-2 font-rubik text-gray-600">
-              <div>
-                <textarea readOnly={true} className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight outline-CYAN100 `} value={noteState.note?.title || ""} ></textarea>
-              </div>
+            
+            {noteState.note
+              ? <div className="mt-2 font-rubik text-gray-600">
+                  <div>
+                    <textarea readOnly className={`px-2 py-1 w-full bg-transparent disabled:bg-inherit leading-tight outline-CYAN100 `} value={noteState.note?.title || ""} ></textarea>
+                  </div>
 
-              <div>
-                <textarea readOnly={true} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit outline-CYAN100 `} value={noteState.note?.details || ""}></textarea>
-              </div>
-            </div>
+                  <div>
+                    <textarea readOnly={true} className={`px-2 py-1 h-[6.5rem] w-full bg-transparent disabled:bg-inherit outline-CYAN100 `} value={noteState.note?.details || ""}></textarea>
+                  </div>
+                </div>
+              : <p className="mt-20 text-gray-500 text-center text-xl"> Nothing found :) </p>
+            }
           </div>
         </div>
       </PrimaryBackground>

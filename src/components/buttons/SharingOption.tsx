@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { Menu } from '@headlessui/react'
-import { AiFillDelete } from 'react-icons/ai'
 import { BsGlobe } from 'react-icons/bs'
 import Share from './Share'
 import Coppy from './Coppy'
