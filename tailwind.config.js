@@ -10,7 +10,8 @@ module.exports = {
         rubik: ["Rubik", "sans-serif"],
         lato: ["Lato", "sans-serif"],
         tillana: ["Tillana", "cursive"],
-        delius: ["Delius", "cursive"]
+        delius: ["Delius", "cursive"],
+        istok: ["Istok Web", "sans-serif"]
       },
       colors: {
         RED50: "#FF6666",
