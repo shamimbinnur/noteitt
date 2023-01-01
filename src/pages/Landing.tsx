@@ -34,7 +34,7 @@ const Landing = () => {
             <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
             <div className="w-3 h-3 bg-green-400 rounded-full"></div>
           </div>
-          <div className="rounded-md w-full overflow-hidden h-full shadow-lg bg-opacity-60 bg-CYAN10">
+          <div className="rounded-md w-full overflow-hidden h-full shadow-lg bg-opacity-60">
             <img src={Noteitt} alt="noteitt" />
           </div>
         </div>
