@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import supabase from '../config/supabaseClient'
 import { RootState } from '../store/store'
+import Noteitt from '../assets/image/noteitt.png'
 
 const Landing = () => {
   const { user }  =  useSelector((state: RootState) => state.user);
@@ -23,11 +24,22 @@ const Landing = () => {
           <p className="text-gray-800 text-3xl leading-normal tracking-wider">The simplest note keeping app that you might not use!</p>
         </div>
         <div>
-          <button onClick={signInWithGoogle} className="bg-gradient-to-br tracking-wide from-BLUE50 to-PURPLE100 text-white text-xl rounded-md px-3 py-1">Create a note</button>
+          <button onClick={signInWithGoogle} className="bg-gradient-to-br hidden md:block tracking-wide from-BLUE50 to-PURPLE100 text-white text-xl rounded-md px-3 py-1">Create a note</button>
         </div>
       </div>
-      <div className="flex-1">
-        <div className="rounded-md w-full h-[250px] bg-opacity-60 bg-CYAN10">
+      <div className="flex-1 flex flex-col gap-y-8">
+        <div>
+          <div className="flex gap-x-1 ml-1 mb-1">
+            <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+            <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+          </div>
+          <div className="rounded-md w-full overflow-hidden h-full shadow-lg bg-opacity-60 bg-CYAN10">
+            <img src={Noteitt} alt="noteitt" />
+          </div>
+        </div>
+        <div>
+          <button onClick={signInWithGoogle} className="bg-gradient-to-br md:hidden tracking-wide from-BLUE50 to-PURPLE100 text-white text-xl rounded-md px-3 py-1">Create a note</button>
         </div>
       </div>
     </div>
