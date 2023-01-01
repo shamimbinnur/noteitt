@@ -17,7 +17,7 @@ const Coppy:FC<Props> = ({ noteUUID }) => {
 
   return (
     <CopyToClipboard text={getPublicURL(noteUUID)}>
-      <div className="bg-white w-7 h-7 p-1 rounded-md cursor-pointer group">
+      <div title="Copy link" className="bg-white w-7 h-7 p-1 rounded-md cursor-pointer group">
         <AiOutlineLink className="w-full h-full text-BLUE50 group-hover:text-BLUE100 transition-all"/>
       </div>
     </CopyToClipboard>

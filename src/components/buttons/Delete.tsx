@@ -11,7 +11,7 @@ const Delete:FC <Props> = ({ noteUUID }) => {
   const { deleteNote } = useSupabaseCRUD()
 
   return (
-    <div className="flex items-end justify-end relative">
+    <div title="Delete" className="flex items-end justify-end relative">
       <Menu>
         <Menu.Items>
           <div className="absolute my-1 ml-1 px-1 py-1 flex gap-x-1 bg-white bg-gradient-to-b from-CYAN10 to-GREY10 rounded-md shadow-md">

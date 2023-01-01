@@ -12,7 +12,7 @@ interface Props {
 const SharingOption:FC <Props> = ({ noteUUID, publicMode }) => {
 
   return (
-    <div className="flex items-end justify-end relative">
+    <div title="Share" className="flex items-end justify-end relative">
       <Menu>
         <Menu.Items>
           <div className="absolute my-1 ml-1 px-1 py-1 flex gap-x-1 bg-white bg-gradient-to-b from-CYAN10 to-GREY10 rounded-md shadow-md">

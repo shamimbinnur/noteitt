@@ -35,7 +35,7 @@ const Color:FC<Props> = ({ noteUUID }) => {
   }
 
   return (
-    <div className="flex items-end justify-end relative">
+    <div title="Colors" className="flex items-end justify-end relative">
       <Menu>
         <Menu.Items>
           <div className="absolute my-1 ml-2 p-1 flex gap-x-1 bg-white bg-gradient-to-b from-CYAN10 to-GREY10 rounded-md shadow-md">

@@ -16,7 +16,7 @@ const Share:FC<Props> = ({ publicMode, noteUUID }) => {
   }
 
   return (
-    <div onClick={handleClick} className="bg-white w-7 h-7 p-[5px] rounded-md cursor-pointer group">
+    <div title={publicMode ? "Turn off sharing" : "Turn on sharing"} onClick={handleClick} className="bg-white w-7 h-7 p-[5px] rounded-md cursor-pointer group">
       {publicMode
       ? <FaShareAlt  className="w-full h-full text-orange-600 animate-pulse group-hover:text-BLUE100 transition-all"/>
       : <TbShareOff  className="w-full h-full text-BLUE50 group-hover:text-BLUE100 transition-all"/>

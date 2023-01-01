@@ -11,7 +11,7 @@ const Cancel:FC = () => {
   }
 
   return (
-    <div onClick={onClickHadler} className="bg-white bg-opacity-10 w-7 h-7 p-1 rounded-full cursor-pointer group">
+    <div title="cancel" onClick={onClickHadler} className="bg-white bg-opacity-10 w-7 h-7 p-1 rounded-full cursor-pointer group">
       <AiOutlineMinus  className="w-full h-full text-gray-200 group-hover:text-gray-300 transition-all"/>
     </div>
   )
