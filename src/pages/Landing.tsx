@@ -15,7 +15,7 @@ const Landing = () => {
   if (user) return <Navigate to="/app" />
 
   return (
-    <div className="flex items-center flex-col gap-y-10 md:flex-row font-istok py-20 px-10 max-w-7xl mx-auto">
+    <div className="flex bg-white items-center flex-col gap-y-10 md:flex-row font-istok py-20 px-10 max-w-7xl mx-auto">
       <div className="flex flex-1 flex-col gap-y-5">
         <div>
           <p className="font-bold text-5xl text-CYAN100">Noteitt<span className="text-RED50">.</span></p>
