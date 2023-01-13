@@ -13,9 +13,14 @@ A simple web app for note keeping and sharing note with others.
 ### This project needs 2 enivironment variables
 
 ```
-REACT_APP_SUPABASE_URL="
-REACT_APP_SUPABASE_ANON_KEY="
+REACT_APP_SUPABASE_URL=
+REACT_APP_SUPABASE_ANON_KEY=
 ```
+
+### Supabase table
+- notes
+- profile
+
 
 ### Run these commands from the local directory of the project:
 
