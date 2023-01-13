@@ -10,10 +10,17 @@ A simple web app for note keeping and sharing note with others.
 3. Supabase, Supabase Realtime Database, Supabase Auth.
 4. Tailwind CSS.
 
+## Features
+
+- Simplest UI/UX
+- Create a note with one click and update it in no time.
+- One-click authentication.
+- Give every note a different color.
+- Share any note with anyone with a simple link.
+
 
 ### Run this on your local machine.
-
-### This project needs 2 enivironment variables
+To run this project, you will need to add the following environment variables to your .env file
 
 ```
 REACT_APP_SUPABASE_URL=
@@ -21,8 +28,28 @@ REACT_APP_SUPABASE_ANON_KEY=
 ```
 
 ### Supabase table
-- notes
-- profile
+1. notes
+2. profile
+
+***Note table***
+
+| fields          | tpye           |
+| --------------  | -------------- |
+| id              | int (Primary)  |
+| details         | varchar        |
+| authorId        | varchar        |
+| isPublic        | boolean        |
+| uuid            | uuid           |
+| color           | text           |
+
+***Profile table***
+
+| fields          | tpye           |
+| --------------  | -------------- |
+| id              | int (Primary)  |
+| email           | varchar        |
+| avatar          | varchar        |
+| full_name       | boolean        |
 
 
 ### Run these commands from the local directory of the project:
