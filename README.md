@@ -4,6 +4,8 @@ A simple web app for note keeping and sharing note with others.
 ### Screenshots
 <img width="1440" alt="Screenshot 2022-12-31 at 8 30 33 PM" src="https://user-images.githubusercontent.com/48399373/212338762-b74de505-348a-4f4f-b1c3-c046b487c6ce.png">
 
+https://user-images.githubusercontent.com/48399373/212458698-c628f411-5c84-4ad7-ac49-35c257b979ed.mov
+
 ## Built with:
 1. React.
 2. Redux Tookit.
