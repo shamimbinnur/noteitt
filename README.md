@@ -29,30 +29,11 @@ REACT_APP_SUPABASE_URL=
 REACT_APP_SUPABASE_ANON_KEY=
 ```
 
-### Supabase table
+### Supabase Schema
 1. notes
 2. profile
 
-***Note table***
-
-| fields          | tpye           |
-| --------------  | -------------- |
-| id              | int (Primary)  |
-| details         | varchar        |
-| authorId        | varchar        |
-| isPublic        | boolean        |
-| uuid            | uuid           |
-| color           | text           |
-
-***Profile table***
-
-| fields          | tpye           |
-| --------------  | -------------- |
-| id              | int (Primary)  |
-| email           | varchar        |
-| avatar          | varchar        |
-| full_name       | boolean        |
-
+<img width="597" alt="Screenshot 2023-09-16 at 1 33 16 PM" src="https://github.com/shamimbinnur/noteitt/assets/48399373/8b2aac94-e739-4a3e-b9bc-10e91c802438">
 
 ### Run these commands from the local directory of the project:
 
